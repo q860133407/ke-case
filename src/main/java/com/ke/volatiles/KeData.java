@@ -1,5 +1,7 @@
 package com.ke.volatiles;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * @author zxg_QAQ
  * @date 2021/2/21下午3:27
@@ -11,5 +13,15 @@ public class KeData {
 
     public void addTO60() {
         this.number = 60;
+    }
+
+    public synchronized void addPlusPlus() {
+        number ++;
+    }
+
+    public AtomicInteger atomicInteger = new AtomicInteger();
+
+    public void addAtomic() {
+        atomicInteger.getAndIncrement();
     }
 }
