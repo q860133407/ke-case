@@ -21,6 +21,7 @@ class User{
 public class ABADemo {
 
     public static void main(String[] args) {
+        // 实现原子引用
         User user01 = new User("z3",12);
         User user02 = new User("li4",13);
 
