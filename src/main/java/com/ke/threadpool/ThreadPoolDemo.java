@@ -1,7 +1,6 @@
 package com.ke.threadpool;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 
 /**
  * @author zxg_QAQ
@@ -13,9 +12,11 @@ public class ThreadPoolDemo {
     public static void main(String[] args) {
         //ExecutorService threadPool = Executors.newFixedThreadPool(5); // 可处理 5 个线程
         //ExecutorService threadPool = Executors.newSingleThreadExecutor(); // 只处理一个线程
-        ExecutorService threadPool = Executors.newCachedThreadPool(); // 可处理 N 个线程，动态调整
+        // ExecutorService threadPool = Executors.newCachedThreadPool(); // 可处理 N 个线程，动态调整
+        ExecutorService threadPool = new ThreadPoolExecutor(2,5,100L
+                ,TimeUnit.SECONDS,new LinkedBlockingQueue<>(3), Executors.defaultThreadFactory(),new ThreadPoolExecutor.DiscardPolicy());
         try {
-            for (int i=1;i<=10;i++) {
+            for (int i=1;i<=20;i++) {
                 threadPool.execute(() -> {
                     System.out.println(Thread.currentThread().getName()+"\t 线程执行");
                 });
