@@ -10,6 +10,7 @@ public class HelloGC {
 
     public static void main(String[] args) throws Exception {
         System.out.println("****** HelloGC");
-        TimeUnit.SECONDS.sleep(Integer.MAX_VALUE);
+        byte[] byteArray = new byte[50*1024*1024];
+        //TimeUnit.SECONDS.sleep(Integer.MAX_VALUE);
     }
 }
