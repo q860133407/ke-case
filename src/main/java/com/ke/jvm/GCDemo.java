@@ -14,6 +14,7 @@ public class GCDemo {
 
     public static void main(String[] args) {
         System.out.println("******GCDemo");
+        System.out.println("******GCDemo");
         try {
             String str = "test";
             while (true) {
