@@ -7,6 +7,6 @@ package com.ke.algorithm;
 public class TwoSumDemo {
 
     public static void main(String[] args) {
-        int [] sum = new int[]{};
+        int [] sum = new int[]{123};
     }
 }
