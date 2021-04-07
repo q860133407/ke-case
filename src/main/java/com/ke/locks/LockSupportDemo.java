@@ -1,5 +1,9 @@
 package com.ke.locks;
 
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  * @author zxg_QAQ
  * @date 2021/4/7下午11:22
@@ -7,9 +11,21 @@ package com.ke.locks;
 public class LockSupportDemo {
 
     static Object objectLock = new Object();
+    static Lock lock = new ReentrantLock();
+    static Condition condition = lock.newCondition();
 
     public static void main(String[] args) {
-        synchronizedWaitNotify();
+        new Thread(()->{
+            System.out.println(Thread.currentThread().getName()+"\t ----- come in");
+            try {
+                condition.await();
+            } catch(Exception e) {
+                e.printStackTrace();
+            } finally {
+                lock.unlock();
+            }
+        },"t1").start();
+
     }
 
     private static void synchronizedWaitNotify() {
