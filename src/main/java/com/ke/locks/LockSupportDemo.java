@@ -9,6 +9,10 @@ public class LockSupportDemo {
     static Object objectLock = new Object();
 
     public static void main(String[] args) {
+        synchronizedWaitNotify();
+    }
+
+    private static void synchronizedWaitNotify() {
         new Thread(()->{
             synchronized (objectLock) {
                 System.out.println(Thread.currentThread().getName()+"\t-----come in");
