@@ -1,5 +1,6 @@
 package com.ke.locks;
 
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.LockSupport;
@@ -17,6 +18,11 @@ public class LockSupportDemo {
 
     public static void main(String[] args) throws Exception {
         Thread t1 = new Thread(()->{
+            try {
+                TimeUnit.SECONDS.sleep(3L);
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
             System.out.println(Thread.currentThread().getName()+"\t ---- come in");
             // 被阻塞
             LockSupport.park();
